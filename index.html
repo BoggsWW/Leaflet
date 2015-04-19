@@ -10,7 +10,7 @@
 		<script src="src/leaflet.js"></script>
 		<script>
 
-			var map = L.map('map').setView([51.505, -0.09], 13);
+			var map = L.map('map').setView([38.89397, -77.02961], 13);
 
 			L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
 				maxZoom: 18,
@@ -20,9 +20,13 @@
 				id: 'examples.map-i875mjb7'
 			}).addTo(map);
 
+			var imageUrl = 'http://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg',
+    		imageBounds = [[40.712216, -74.22655], [40.773941, -74.12544]];
+			L.imageOverlay(imageUrl, imageBounds, {opacity:0.3, attribution:'halluh peeps'}).addTo(map);
 
-			L.marker([51.5, -0.09]).addTo(map)
-				.bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
+
+			L.marker([38.89397, -77.02961]).addTo(map)
+				.bindPopup("<b>Hello world!</b><br />I am a popup.");
 
 			L.circle([51.508, -0.11], 500, {
 				color: 'red',
@@ -42,7 +46,7 @@
 			function onMapClick(e) {
 				popup
 					.setLatLng(e.latlng)
-					.setContent("You clicked the map at " + e.latlng.toString())
+					.setContent("You clicked the map at " + e.latlng.toString() + "  " + L.version)
 					.openOn(map);
 			}
 
